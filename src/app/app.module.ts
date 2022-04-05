@@ -8,19 +8,28 @@ import { DepartamentosComponent } from './components/departamentos/departamentos
 import { APP_ROUTING } from './routes';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TablaDepartamentosComponent } from './components/tables/tabla-departamentos/tabla-departamentos.component';
+import { FormularioIngresoDepartamentosComponent } from './components/forms/formulario-ingreso-departamentos/formulario-ingreso-departamentos.component';
+import { FormularioActualizacionDepartamentosComponent } from './components/forms/formulario-actualizacion-departamentos/formulario-actualizacion-departamentos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    DepartamentosComponent
+    DepartamentosComponent,
+    TablaDepartamentosComponent,
+    FormularioIngresoDepartamentosComponent,
+    FormularioActualizacionDepartamentosComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTING,
     HttpClientModule,
-    FontAwesomeModule
+    FormsModule,
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

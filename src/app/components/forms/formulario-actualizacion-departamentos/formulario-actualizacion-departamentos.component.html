@@ -1,0 +1,28 @@
+<form [formGroup]="formulario" *ngIf="formulario">
+    <div class="mb-4">
+        <label for="numCodigoDepartamento" class="form-label">Identificador Departamento</label>
+        <input formControlName="numCodigoDepartamento" type="text" class="form-control"/>
+    </div>
+    <div class="mb-4">
+        <label for="strCodigoDaneDepartamento" class="form-label">Código Dane</label>
+        <input formControlName="strCodigoDaneDepartamento" type="text" class="form-control"/>
+        <div class="alert alert-danger" *ngIf="formulario.get('strCodigoDaneDepartamento').invalid && (formulario.get('strCodigoDaneDepartamento').dirty || formulario.get('strCodigoDaneDepartamento').touched)">
+            <div *ngIf="formulario.get('strCodigoDaneDepartamento').errors.required">El Código Dane es requerido</div>
+            <div *ngIf="formulario.get('strCodigoDaneDepartamento').errors.minlength">El Código Dane debe tener minimo 2 carácteres</div>
+        </div>
+    </div>
+    <div class="mb-4">
+        <label for="strNombreDepartamento" class="form-label">Nombre Departamento</label>
+        <input formControlName="strNombreDepartamento" type="text" class="form-control" name="strNombreDepartamento"/>       
+        <div class="alert alert-danger" *ngIf="formulario.get('strNombreDepartamento').invalid && (formulario.get('strNombreDepartamento').dirty || formulario.get('strNombreDepartamento').touched)">
+            <div *ngIf="formulario.get('strNombreDepartamento').errors.required">El Nombre Departamento es requerido</div>
+            <div *ngIf="formulario.get('strNombreDepartamento').errors.minlength">El Nombre Departamento debe tener minimo 5 carácteres</div>
+        </div>
+    </div>
+</form>
+<div id="boton">  
+    <button type="button" class="btn btn-danger" (click)="actualizarDepartamento()" [disabled]="!formulario.valid">Guardar</button>
+</div>
+<div id="boton">  
+    <button type="button" class="btn btn-danger" (click)="volverPaginaPrincipal()">Volver Página Anterior</button>
+</div>

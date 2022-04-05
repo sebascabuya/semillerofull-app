@@ -1,0 +1,28 @@
+<div>
+    <table class="table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id Departamento</th>
+            <th scope="col">Código Dane</th>
+            <th scope="col">Nombre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let departamento of listaDepartamentos">
+            <th scope="row">{{departamento.numCodigoDepartamento}}</th>
+            <td>{{departamento.strCodigoDaneDepartamento}}</td>
+            <td>{{departamento.strNombreDepartamento}}</td>
+            <td>
+              <button type="button" class="btn btn-primary" (click)="setIdDepartamentoElegido(departamento.numCodigoDepartamento)" routerLink="formulario-actualizacion-departamentos">
+                <fa-icon [icon]="faPenToSquare"></fa-icon>
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-primary" (click)="eliminarDepartamento(departamento.numCodigoDepartamento)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

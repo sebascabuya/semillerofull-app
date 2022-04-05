@@ -7,22 +7,10 @@
     </button>
 </div>
 <div *ngIf="mostrarListadoDepartamentos">
-    <table class="table table-success table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Id Departamento</th>
-            <th scope="col">Código Dane</th>
-            <th scope="col">Nombre</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let departamento of listaDepartamentos">
-            <th scope="row">{{departamento.numCodigoDepartamento}}</th>
-            <td>{{departamento.strCodigoDaneDepartamento}}</td>
-            <td>{{departamento.strNombreDepartamento}}</td>
-            <td><fa-icon [icon]="faPenToSquare"></fa-icon></td>
-            <td><fa-icon [icon]="faTrash"></fa-icon></td>
-          </tr>
-        </tbody>
-      </table>
+    <app-tabla-departamentos></app-tabla-departamentos>
+</div>
+<div>
+  <button type="button" class="btn btn-primary" routerLink="formulario-ingreso-departamentos">
+      Ingresar Departamento
+  </button>
 </div>

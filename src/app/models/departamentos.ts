@@ -1,5 +1,5 @@
 export class Departamentos {
-    numCodigoDepartamento: number = 0;
-    strCodigoDaneDepartamento: string = '';
-    strNombreDepartamento: string = '';
+    numCodigoDepartamento: number;
+    strCodigoDaneDepartamento: string;
+    strNombreDepartamento: string;
 }
