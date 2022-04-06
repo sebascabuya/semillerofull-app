@@ -1,0 +1,17 @@
+<div>
+    <h1>Listado Referencias</h1>
+</div>
+<div>
+    <button type="button" class="btn btn-primary" (click)="getMostrarListadoReferencias()">
+        {{mostrarListadoReferencias == true ? "Ocultar Lista" : "Mostrar Lista"}}
+    </button>
+</div>
+<div *ngIf="mostrarListadoReferencias">
+    Acá irá la tabla
+    <!--<app-tabla-departamentos></app-tabla-departamentos>-->
+</div>
+<div>
+  <button type="button" class="btn btn-primary" routerLink="formulario-ingreso-departamentos">
+      Ingresar Referencia
+  </button>
+</div>

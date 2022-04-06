@@ -16,6 +16,8 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { TablaClientesComponent } from './components/tables/tabla-clientes/tabla-clientes.component';
 import { FormularioIngresoClientesComponent } from './components/forms/formulario-ingreso-clientes/formulario-ingreso-clientes.component';
 import { FormularioActualizacionClientesComponent } from './components/forms/formulario-actualizacion-clientes/formulario-actualizacion-clientes.component';
+import { TablaReferenciasComponent } from './components/tables/tabla-referencias/tabla-referencias.component';
+import { ReferenciasComponent } from './components/referencias/referencias.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { FormularioActualizacionClientesComponent } from './components/forms/for
     ClientesComponent,
     TablaClientesComponent,
     FormularioIngresoClientesComponent,
-    FormularioActualizacionClientesComponent
+    FormularioActualizacionClientesComponent,
+    TablaReferenciasComponent,
+    ReferenciasComponent
   ],
   imports: [
     BrowserModule,
