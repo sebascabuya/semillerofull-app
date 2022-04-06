@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Referencias } from 'src/app/models/referencias';
+import { ReferenciasService } from 'src/app/services/referencias.service';
 
 @Component({
   selector: 'app-tabla-referencias',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablaReferenciasComponent implements OnInit {
 
-  constructor() { }
+  listaReferencias: Referencias[];
+  faPenToSquare = faPenToSquare;
+  faTrash = faTrash;
+
+  constructor(private referenciasService: ReferenciasService) { }
 
   ngOnInit(): void {
+    this.getListadoReferencias();
   }
 
+  getListadoReferencias(){
+    this.referenciasService.getListaReferencias().subscribe(
+      (referencias) => (this.listaReferencias = referencias)
+    )
+  }
 }
