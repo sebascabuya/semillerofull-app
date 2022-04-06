@@ -20,4 +20,12 @@ export class ReferenciasService {
   getListaReferencias(): Observable<Referencias[]>{
     return this.http.get<Referencias[]>(`${this.urlBase}/referencias/listareferencias`, {headers: this.header})
   }
+
+  getReferenciaById(idReferencia: number): Observable<Referencias[]>{
+    return this.http.get<Referencias[]>(`${this.urlBase}/referencias/consultarreferenciabyid/${idReferencia}`, {headers: this.header})
+  }
+
+  postReferencias(referencias: Referencias): Observable<Referencias>{
+    return this.http.post<Referencias>(`${this.urlBase}/referencias/ingresarreferencia`, referencias, {headers: this.header})
+  }
 }

@@ -25,4 +25,8 @@ export class TablaReferenciasComponent implements OnInit {
       (referencias) => (this.listaReferencias = referencias)
     )
   }
+  
+  setIdReferenciaElegida(idReferencia: number){
+    sessionStorage.setItem("Referencia Id", JSON.stringify(idReferencia))
+  }
 }

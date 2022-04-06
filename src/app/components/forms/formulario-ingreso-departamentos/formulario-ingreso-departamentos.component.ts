@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Departamentos } from 'src/app/models/departamentos';
 import { DepartamentosService } from 'src/app/services/departamentos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formulario-ingreso-departamentos',
@@ -32,7 +33,7 @@ export class FormularioIngresoDepartamentosComponent implements OnInit {
   }
 
   volverPaginaPrincipal(): void{ 
-    this.router.navigate(['/departamentos'])
+    this.router.navigateByUrl('/departamentos', {skipLocationChange: true}).then(()=> this.router.navigate(["/departamentos"]));
   }
 
 
@@ -42,7 +43,9 @@ export class FormularioIngresoDepartamentosComponent implements OnInit {
     this.departamentosService.postDepartamentos(this.departamento).subscribe(
       (departamentoRta) => 
       {
-        this.armarFormulario()
+        this.armarFormulario(),
+        Swal.fire('¡Proceso Exitoso!', 'Referencia Ingresada', 'success'),
+        this.volverPaginaPrincipal()
       }
     );
   }

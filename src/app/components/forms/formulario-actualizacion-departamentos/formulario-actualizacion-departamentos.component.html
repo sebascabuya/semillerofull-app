@@ -20,9 +20,7 @@
         </div>
     </div>
 </form>
-<div id="boton">  
-    <button type="button" class="btn btn-danger" (click)="actualizarDepartamento()" [disabled]="!formulario.valid">Guardar</button>
-</div>
-<div id="boton">  
+<div class="d-grid gap-2 d-md-block">
+    <button type="button" class="btn btn-danger" (click)="actualizarDepartamento()" [disabled]="!formulario.valid">Actualizar</button>  
     <button type="button" class="btn btn-danger" (click)="volverPaginaPrincipal()">Volver Página Anterior</button>
 </div>

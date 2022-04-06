@@ -1,0 +1,43 @@
+<form [formGroup]="formulario" *ngIf="formulario">
+    <div class="mb-2">
+        <label for="numIdReferencia" class="form-label">Id Referencia</label>
+        <input formControlName="numIdReferencia" type="text" class="form-control" name="numIdReferencia"/>
+    </div>
+    <div class="mb-2">
+        <label for="strDominio" class="form-label">Tipo Dominio</label>
+        <input formControlName="strDominio" type="text" class="form-control" name="strDominio"/>
+        <div class="alert alert-danger" *ngIf="formulario.get('strDominio').invalid && (formulario.get('strDominio').dirty || formulario.get('strDominio').touched)">
+            <div *ngIf="formulario.get('strDominio').errors.required">El tipo de dominio es requerido</div>
+            <div *ngIf="formulario.get('strDominio').errors.minlength">El tipo de dominio debe tener minimo 12 carácteres</div>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label for="strRangoValor" class="form-label">Rango Valor</label>
+        <input formControlName="strRangoValor" type="text" class="form-control" name="strRangoValor"/>       
+        <div class="alert alert-danger" *ngIf="formulario.get('strRangoValor').invalid && (formulario.get('strRangoValor').dirty || formulario.get('strRangoValor').touched)">
+            <div *ngIf="formulario.get('strRangoValor').errors.required">El rango valor es requerido</div>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label for="strDescripcion" class="form-label">Descripción del Valor</label>
+        <input formControlName="strDescripcion" type="text" class="form-control" name="strDescripcion"/>       
+        <div class="alert alert-danger" *ngIf="formulario.get('strDescripcion').invalid && (formulario.get('strDescripcion').dirty || formulario.get('strDescripcion').touched)">
+            <div *ngIf="formulario.get('strDescripcion').errors.required">La descripción del valor es requerida</div>
+            <div *ngIf="formulario.get('strDescripcion').errors.minlength">La descripción del valor debe tener minimo 6 carácteres</div>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label class="form-label">¿El dominio estará activo?</label>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" formControlName="btnradio" name="btnradio" id="btnradioSi" autocomplete="off" value="Yes" checked>
+            <label class="btn btn-outline-success" for="btnradioSi">Si</label>
+            <input type="radio" class="btn-check" formControlName="btnradio" name="btnradio" id="btnradioNo" autocomplete="off" value="No">
+            <label class="btn btn-outline-warning" for="btnradioNo">No</label>
+        </div>  
+    </div>
+</form>
+<div class="d-grid gap-2 d-md-block">  
+    <button type="button" class="btn btn-danger" [disabled]="!formulario.valid">Guardar</button>
+    <button type="button" class="btn btn-danger" (click)="volverPaginaPrincipal()">Volver Página Anterior</button>
+</div>
+
