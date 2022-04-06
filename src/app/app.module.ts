@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TablaDepartamentosComponent } from './components/tables/tabla-departamentos/tabla-departamentos.component';
 import { FormularioIngresoDepartamentosComponent } from './components/forms/formulario-ingreso-departamentos/formulario-ingreso-departamentos.component';
 import { FormularioActualizacionDepartamentosComponent } from './components/forms/formulario-actualizacion-departamentos/formulario-actualizacion-departamentos.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormularioActualizacionDepartamentosComponent } from './components/form
     DepartamentosComponent,
     TablaDepartamentosComponent,
     FormularioIngresoDepartamentosComponent,
-    FormularioActualizacionDepartamentosComponent
+    FormularioActualizacionDepartamentosComponent,
+    ClientesComponent
   ],
   imports: [
     BrowserModule,
