@@ -13,6 +13,9 @@ import { TablaDepartamentosComponent } from './components/tables/tabla-departame
 import { FormularioIngresoDepartamentosComponent } from './components/forms/formulario-ingreso-departamentos/formulario-ingreso-departamentos.component';
 import { FormularioActualizacionDepartamentosComponent } from './components/forms/formulario-actualizacion-departamentos/formulario-actualizacion-departamentos.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
+import { TablaClientesComponent } from './components/tables/tabla-clientes/tabla-clientes.component';
+import { FormularioIngresoClientesComponent } from './components/forms/formulario-ingreso-clientes/formulario-ingreso-clientes.component';
+import { FormularioActualizacionClientesComponent } from './components/forms/formulario-actualizacion-clientes/formulario-actualizacion-clientes.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { ClientesComponent } from './components/clientes/clientes.component';
     TablaDepartamentosComponent,
     FormularioIngresoDepartamentosComponent,
     FormularioActualizacionDepartamentosComponent,
-    ClientesComponent
+    ClientesComponent,
+    TablaClientesComponent,
+    FormularioIngresoClientesComponent,
+    FormularioActualizacionClientesComponent
   ],
   imports: [
     BrowserModule,
