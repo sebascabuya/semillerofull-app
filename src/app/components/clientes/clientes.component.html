@@ -1,1 +1,17 @@
-<p>clientes works!</p>
+<div>
+    <h1>Listado Clientes</h1>
+</div>
+<div>
+    <button type="button" class="btn btn-primary" (click)="getMostrarListadoClientes()">
+        {{mostrarListadoClientes == true ? "Ocultar Lista" : "Mostrar Lista"}}
+    </button>
+</div>
+<div *ngIf="mostrarListadoClientes">
+    Acá irá la tabla
+    <!--<app-tabla-departamentos></app-tabla-departamentos>-->
+</div>
+<div>
+  <button type="button" class="btn btn-primary" routerLink="formulario-ingreso-departamentos">
+      Ingresar Cliente
+  </button>
+</div>
