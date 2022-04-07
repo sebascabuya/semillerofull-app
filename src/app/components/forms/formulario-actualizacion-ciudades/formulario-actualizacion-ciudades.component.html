@@ -1,0 +1,35 @@
+<form [formGroup]="formulario" *ngIf="formulario">
+    <div class="mb-3">
+        <label for="numCodigoCiudad" class="form-label">Id Ciudad</label>
+        <input formControlName="numCodigoCiudad" type="text" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <label for="strCodigoDaneCiudad" class="form-label">Código Dane</label>
+        <input formControlName="strCodigoDaneCiudad" type="text" class="form-control"/>
+        <div class="alert alert-danger" *ngIf="formulario.get('strCodigoDaneCiudad').invalid && (formulario.get('strCodigoDaneCiudad').dirty || formulario.get('strCodigoDaneCiudad').touched)">
+            <div *ngIf="formulario.get('strCodigoDaneCiudad').errors.required">El código dane es requerido</div>
+            <div *ngIf="formulario.get('strCodigoDaneCiudad').errors.minlength">El código dane debe tener minimo 4 carácteres</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="strNombreCiudad" class="form-label">Nombre Ciudad</label>
+        <input formControlName="strNombreCiudad" type="text" class="form-control" name="strNombreCiudad"/>       
+        <div class="alert alert-danger" *ngIf="formulario.get('strNombreCiudad').invalid && (formulario.get('strNombreCiudad').dirty || formulario.get('strNombreCiudad').touched)">
+            <div *ngIf="formulario.get('strNombreCiudad').errors.required">El nombre de la ciudad es requerido</div>
+            <div *ngIf="formulario.get('strNombreCiudad').errors.minlength">El nombre de la ciudad debe tener minimo 5 carácteres</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="departamentosEntity" class="form-label">Departamento</label>
+        <select id="departamentosEntity" class="form-select" formControlName="departamentosEntity">
+            <option *ngFor="let departamento of nombresDepartamentos" value="{{departamento.numCodigoDepartamento}}">{{departamento.strNombreDepartamento}}</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="formulario.get('departamentosEntity').invalid && (formulario.get('departamentosEntity').dirty || formulario.get('departamentosEntity').touched)">
+            <div *ngIf="formulario.get('departamentosEntity').errors.required">El departamento es requerido</div>
+        </div>
+    </div>
+</form>
+<div class="d-grid gap-2 d-md-block">
+    <button type="button" class="btn btn-danger" [disabled]="!formulario.valid">Actualizar</button>
+    <button type="button" class="btn btn-danger" (click)="volverPaginaPrincipal()">Volver Página Anterior</button>
+</div>
