@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Ciudades } from 'src/app/models/ciudades';
+import { CiudadesService } from 'src/app/services/ciudades.service';
 
 @Component({
   selector: 'app-tabla-ciudades',
@@ -14,9 +15,17 @@ export class TablaCiudadesComponent implements OnInit {
   faPenToSquare = faPenToSquare;
   faTrash = faTrash;
 
-  constructor() { }
+  constructor(
+    private ciudadesService: CiudadesService
+  ) { }
 
   ngOnInit(): void {
+    this.getListadoCiudades();
   }
 
+  getListadoCiudades(){
+    this.ciudadesService.getListaCiudades().subscribe(
+      (ciudadesRta) => (this.listaCiudades = ciudadesRta)
+    )
+  }
 }

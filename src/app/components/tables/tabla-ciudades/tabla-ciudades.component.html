@@ -10,24 +10,24 @@
             <th scope="col">Eliminar</th>
           </tr>
         </thead>
-        <!--<tbody>
+        <tbody>
           <tr *ngFor="let ciudad of listaCiudades">
             <th scope="row">{{ciudad.numCodigoCiudad}}</th>
             <td>{{ciudad.strCodigoDaneCiudad}}</td>
             <td>{{ciudad.strNombreCiudad}}</td>
             <td>{{ciudad.departamentosEntity.strNombreDepartamento}}</td>
             <td>
-              <button type="button" class="btn btn-primary" (click)="setIdDepartamentoElegido(departamento.numCodigoDepartamento)" routerLink="formulario-actualizacion-departamentos">
+              <button type="button" class="btn btn-primary">
                 <fa-icon [icon]="faPenToSquare"></fa-icon>
               </button>
             </td>
             <td>
-              <button type="button" class="btn btn-primary" (click)="eliminarDepartamento(departamento.numCodigoDepartamento)">
+              <button type="button" class="btn btn-primary">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </button>
             </td>
           </tr>
-        </tbody>-->
+        </tbody>
       </table>
 </div>
 
