@@ -18,7 +18,7 @@
     <div class="mb-4">
         <label for="departamentosEntity" class="form-label">Departamento</label>
         <select id="departamentosEntity" class="form-select" formControlName="departamentosEntity">
-            <option *ngFor="let departamento of nombresDepartamentos">{{departamento.strNombreDepartamento}}</option>
+            <option *ngFor="let departamento of nombresDepartamentos" value="{{departamento.numCodigoDepartamento}}">{{departamento.strNombreDepartamento}}</option>
         </select>
         <div class="alert alert-danger" *ngIf="formulario.get('departamentosEntity').invalid && (formulario.get('departamentosEntity').dirty || formulario.get('departamentosEntity').touched)">
             <div *ngIf="formulario.get('departamentosEntity').errors.required">El departamento es requerido</div>
@@ -26,6 +26,7 @@
     </div>
 </form>
 <div class="d-grid gap-2 d-md-block">
-    <button type="button" class="btn btn-danger" [disabled]="!formulario.valid">Guardar</button>
+    <button type="button" class="btn btn-danger" (click)="crearCiudad()" [disabled]="!formulario.valid">Guardar</button>
     <button type="button" class="btn btn-danger" (click)="volverPaginaPrincipal()">Volver Página Anterior</button>
 </div>
+

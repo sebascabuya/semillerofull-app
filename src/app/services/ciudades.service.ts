@@ -22,4 +22,8 @@ export class CiudadesService {
   getListaCiudades(): Observable<Ciudades[]>{
     return this.http.get<Ciudades[]>(`${this.urlBase}/ciudades/listaciudades`, {headers: this.header})
   }
+
+  postCiudades(ciudades: Ciudades): Observable<Ciudades>{
+    return this.http.post<Ciudades>(`${this.urlBase}/ciudades/ingresarciudades`, ciudades, {headers: this.header})
+  }
 }
