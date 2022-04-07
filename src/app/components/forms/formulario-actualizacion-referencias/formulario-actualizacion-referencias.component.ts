@@ -56,4 +56,19 @@ export class FormularioActualizacionReferenciasComponent implements OnInit {
       }
     )
   }
+
+  editarReferencias(){
+    this.referencias.strDominio = this.formulario.value.strDominio;
+    this.referencias.strRangoValor = this.formulario.value.strRangoValor;
+    this.referencias.strDescripcion = this.formulario.value.strDescripcion;
+    this.referencias.strEstado = this.formulario.value.btnradio;
+    this.referenciasService.putReferencias(this.referenciaId, this.referencias).subscribe(
+      (referenciasRta) => {
+        (this.ngOnInit()),
+        Swal.fire('¡Proceso Exitoso!', 'Referencia Actualizada', 'success'),
+        this.volverPaginaPrincipal();
+        sessionStorage.removeItem("Referencia Id")
+      }
+    )
+  }
 }

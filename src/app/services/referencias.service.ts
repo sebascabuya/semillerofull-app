@@ -28,4 +28,12 @@ export class ReferenciasService {
   postReferencias(referencias: Referencias): Observable<Referencias>{
     return this.http.post<Referencias>(`${this.urlBase}/referencias/ingresarreferencia`, referencias, {headers: this.header})
   }
+
+  putReferencias(idReferencia: number, referencias: Referencias): Observable<Referencias>{
+    return this.http.put<Referencias>(`${this.urlBase}/referencias/editarreferencia/${idReferencia}`, referencias, {headers: this.header})
+  }
+
+  deleteReferencias(idReferencia: number): Observable<Referencias>{
+    return this.http.delete<Referencias>(`${this.urlBase}/referencias/eliminarreferenciabyid/${idReferencia}`, {headers: this.header})
+  }
 }
