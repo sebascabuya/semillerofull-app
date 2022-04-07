@@ -22,6 +22,7 @@ import { FormularioIngresoReferenciasComponent } from './components/forms/formul
 import { FormularioActualizacionReferenciasComponent } from './components/forms/formulario-actualizacion-referencias/formulario-actualizacion-referencias.component';
 import { CiudadesComponent } from './components/ciudades/ciudades.component';
 import { TablaCiudadesComponent } from './components/tables/tabla-ciudades/tabla-ciudades.component';
+import { FormularioIngresoCiudadesComponent } from './components/forms/formulario-ingreso-ciudades/formulario-ingreso-ciudades.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { TablaCiudadesComponent } from './components/tables/tabla-ciudades/tabla
     FormularioIngresoReferenciasComponent,
     FormularioActualizacionReferenciasComponent,
     CiudadesComponent,
-    TablaCiudadesComponent
+    TablaCiudadesComponent,
+    FormularioIngresoCiudadesComponent
   ],
   imports: [
     BrowserModule,

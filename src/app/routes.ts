@@ -4,6 +4,7 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { DepartamentosComponent } from './components/departamentos/departamentos.component';
 import { FormularioActualizacionDepartamentosComponent } from './components/forms/formulario-actualizacion-departamentos/formulario-actualizacion-departamentos.component';
 import { FormularioActualizacionReferenciasComponent } from './components/forms/formulario-actualizacion-referencias/formulario-actualizacion-referencias.component';
+import { FormularioIngresoCiudadesComponent } from './components/forms/formulario-ingreso-ciudades/formulario-ingreso-ciudades.component';
 import { FormularioIngresoDepartamentosComponent } from './components/forms/formulario-ingreso-departamentos/formulario-ingreso-departamentos.component';
 import { FormularioIngresoReferenciasComponent } from './components/forms/formulario-ingreso-referencias/formulario-ingreso-referencias.component';
 import { ReferenciasComponent } from './components/referencias/referencias.component';
@@ -16,6 +17,7 @@ const ROUTES: Routes = [
     { path: 'departamentos/formulario-ingreso-departamentos', component: FormularioIngresoDepartamentosComponent},
     { path: 'departamentos/formulario-actualizacion-departamentos', component: FormularioActualizacionDepartamentosComponent},
     { path: 'ciudades', component: CiudadesComponent},
+    { path: 'ciudades/formulario-ingreso-ciudades', component: FormularioIngresoCiudadesComponent},
     { path: 'clientes', component: ClientesComponent}
     
 ]
