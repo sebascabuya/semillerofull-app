@@ -41,9 +41,12 @@ export class TablaDepartamentosComponent implements OnInit {
       denyButtonText: `Don't delete`,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.departamentosService.deleteDepartamentos(idDepartamento).subscribe();
-        Swal.fire('Department deleted!', '', 'success');
-        this.ngOnInit();
+        this.departamentosService.deleteDepartamentos(idDepartamento).subscribe(
+          (rta) => {
+            Swal.fire('Department deleted!', '', 'success'),
+            this.ngOnInit()
+          }
+        ); 
       } else if (result.isDenied) {
         Swal.fire('Department was not deleted', '', 'info')
       }
