@@ -17,7 +17,7 @@
     </div>
     <div class="mb-4">
         <label for="departamentosEntity" class="form-label">Departamento</label>
-        <select id="departamentosEntity" class="form-select" formControlName="departamentosEntity">
+        <select id="departamentosEntity" class="form-select" size="3" formControlName="departamentosEntity">
             <option *ngFor="let departamento of nombresDepartamentos" value="{{departamento.numCodigoDepartamento}}">{{departamento.strNombreDepartamento}}</option>
         </select>
         <div class="alert alert-danger" *ngIf="formulario.get('departamentosEntity').invalid && (formulario.get('departamentosEntity').dirty || formulario.get('departamentosEntity').touched)">

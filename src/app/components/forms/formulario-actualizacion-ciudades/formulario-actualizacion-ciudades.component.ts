@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Ciudades } from 'src/app/models/ciudades';
+import { Departamentos } from 'src/app/models/departamentos';
 import { CiudadesService } from 'src/app/services/ciudades.service';
+import { DepartamentosService } from 'src/app/services/departamentos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formulario-actualizacion-ciudades',
@@ -12,15 +15,22 @@ import { CiudadesService } from 'src/app/services/ciudades.service';
 export class FormularioActualizacionCiudadesComponent implements OnInit {
 
   ciudades: Ciudades = new Ciudades();
+  departamentos: Departamentos = new Departamentos();
   formulario: FormGroup;
+  ciudadElegida: Ciudades[];
+  nombresDepartamentos: Departamentos[];
+  private idCiudadElegida: number = JSON.parse(sessionStorage.getItem("Ciudad Id"));
 
   constructor(
     private ciudadesService: CiudadesService,
+    private departamentosService: DepartamentosService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.armarFormulario();
+    this.getListadoNombresDepartamentos();
+    this.consultarCiudadById();
   }
 
 
@@ -35,5 +45,42 @@ export class FormularioActualizacionCiudadesComponent implements OnInit {
       strNombreCiudad: new FormControl(this.ciudades.strNombreCiudad, [Validators.required, Validators.minLength(5)]),
       departamentosEntity: new FormControl(this.ciudades.departamentosEntity, [Validators.required])
     })
+  }
+
+  getListadoNombresDepartamentos(){
+    this.departamentosService.getDepartamentos().subscribe(
+      (departamentosRta) => (this.nombresDepartamentos = departamentosRta)
+    )
+  }
+
+  consultarCiudadById(){
+    this.formulario.get("numCodigoCiudad").disable();
+    this.ciudadesService.getConsultarCiudadPorId(this.idCiudadElegida).subscribe(
+      (ciudadRta) => {
+        (this.ciudadElegida = ciudadRta)
+        this.formulario.patchValue({
+          numCodigoCiudad: this.ciudadElegida['numCodigoCiudad'],  
+          strCodigoDaneCiudad: this.ciudadElegida['strCodigoDaneCiudad'],
+          strNombreCiudad: this.ciudadElegida['strNombreCiudad'],
+          departamentosEntity: this.ciudadElegida['departamentosEntity']['numCodigoDepartamento']
+        }),
+        console.log(this.ciudadElegida['departamentosEntity']['numCodigoDepartamento'])
+      }
+    )
+  }
+
+  actualizarCiudades(){
+    this.ciudades.strCodigoDaneCiudad = this.formulario.value.strCodigoDaneCiudad;
+    this.ciudades.strNombreCiudad = this.formulario.value.strNombreCiudad;
+    this.departamentos.numCodigoDepartamento = this.formulario.value.departamentosEntity;
+    this.ciudades.departamentosEntity = this.departamentos;
+    this.ciudadesService.putCiudades(this.idCiudadElegida, this.ciudades).subscribe(
+      (ciudadesRta) => {
+        (this.ngOnInit()),
+        (Swal.fire('¡Proceso Exitoso!', 'Ciudad Actualizada', 'success')),
+        (this.volverPaginaPrincipal());
+        (sessionStorage.removeItem("Ciudad Id"))
+      }
+    )
   }
 }

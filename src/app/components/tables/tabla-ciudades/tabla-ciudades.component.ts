@@ -28,4 +28,8 @@ export class TablaCiudadesComponent implements OnInit {
       (ciudadesRta) => (this.listaCiudades = ciudadesRta)
     )
   }
+
+  setCiudadIdElegida(ciudadId: number){
+    sessionStorage.setItem("Ciudad Id", JSON.stringify(ciudadId))
+  }
 }

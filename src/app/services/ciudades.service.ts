@@ -23,7 +23,15 @@ export class CiudadesService {
     return this.http.get<Ciudades[]>(`${this.urlBase}/ciudades/listaciudades`, {headers: this.header})
   }
 
+  getConsultarCiudadPorId(ciudadId: number): Observable<Ciudades[]>{
+    return this.http.get<Ciudades[]>(`${this.urlBase}/ciudades/consultarciudadbyid/${ciudadId}`, {headers: this.header})
+  }
+
   postCiudades(ciudades: Ciudades): Observable<Ciudades>{
     return this.http.post<Ciudades>(`${this.urlBase}/ciudades/ingresarciudades`, ciudades, {headers: this.header})
+  }
+
+  putCiudades(ciudadId: number, ciudades: Ciudades): Observable<Ciudades>{
+    return this.http.put<Ciudades>(`${this.urlBase}/ciudades/editarciudad/${ciudadId}`, ciudades, {headers: this.header})
   }
 }

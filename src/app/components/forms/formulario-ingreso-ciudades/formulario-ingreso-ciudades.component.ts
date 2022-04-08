@@ -51,7 +51,7 @@ export class FormularioIngresoCiudadesComponent implements OnInit {
   crearCiudad(){
     this.ciudades.strCodigoDaneCiudad = this.formulario.value.strCodigoDaneCiudad;
     this.ciudades.strNombreCiudad = this.formulario.value.strNombreCiudad;
-     this.departamentos.numCodigoDepartamento = this.formulario.value.departamentosEntity;
+    this.departamentos.numCodigoDepartamento = this.formulario.value.departamentosEntity;
     this.ciudades.departamentosEntity = this.departamentos;
     this.ciudadesService.postCiudades(this.ciudades).subscribe(
       (ciudadesRta) => {
