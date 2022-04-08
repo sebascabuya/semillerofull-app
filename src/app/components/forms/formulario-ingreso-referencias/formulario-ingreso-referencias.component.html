@@ -22,8 +22,10 @@
             <div *ngIf="formulario.get('strDescripcion').errors.minlength">La descripción del valor debe tener minimo 6 carácteres</div>
         </div>
     </div>
-    <div class="mb-3">
+    <div>
         <label class="form-label">¿El dominio estará activo?</label>
+    </div>
+    <div class="mb-3">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
             <input type="radio" class="btn-check" formControlName="btnradio" name="btnradio" id="btnradioSi" autocomplete="off" value="Yes" checked>
             <label class="btn btn-outline-success" for="btnradioSi">Si</label>

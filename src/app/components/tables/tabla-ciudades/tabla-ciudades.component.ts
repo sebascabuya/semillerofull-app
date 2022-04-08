@@ -45,8 +45,8 @@ export class TablaCiudadesComponent implements OnInit {
       if (result.isConfirmed) {
         this.ciudadesService.deleteCiudades(ciudadId).subscribe(
           (rta) => {
-            Swal.fire('City deleted!', '', 'success')
-            this.ngOnInit();
+            Swal.fire('City deleted!', '', 'success'),
+            this.ngOnInit()
           }
         );
       } else if (result.isDenied) {

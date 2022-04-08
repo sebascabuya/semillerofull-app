@@ -42,7 +42,7 @@ export class TablaDepartamentosComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.departamentosService.deleteDepartamentos(idDepartamento).subscribe();
-        Swal.fire('Department deleted!', '', 'success')
+        Swal.fire('Department deleted!', '', 'success');
         this.ngOnInit();
       } else if (result.isDenied) {
         Swal.fire('Department was not deleted', '', 'info')

@@ -44,7 +44,7 @@ export class FormularioIngresoDepartamentosComponent implements OnInit {
       (departamentoRta) => 
       {
         this.armarFormulario(),
-        Swal.fire('¡Proceso Exitoso!', 'Referencia Ingresada', 'success'),
+        Swal.fire('¡Proceso Exitoso!', 'Departamento Ingresado', 'success'),
         this.volverPaginaPrincipal()
       }
     );
