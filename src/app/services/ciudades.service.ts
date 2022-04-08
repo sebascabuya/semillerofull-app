@@ -34,4 +34,8 @@ export class CiudadesService {
   putCiudades(ciudadId: number, ciudades: Ciudades): Observable<Ciudades>{
     return this.http.put<Ciudades>(`${this.urlBase}/ciudades/editarciudad/${ciudadId}`, ciudades, {headers: this.header})
   }
+
+  deleteCiudades(ciudadId: number): Observable<Ciudades>{
+    return this.http.delete<Ciudades>(`${this.urlBase}/ciudades/eliminarciudad/${ciudadId}`, {headers: this.header})
+  }
 }
