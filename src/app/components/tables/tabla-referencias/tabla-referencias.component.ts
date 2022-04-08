@@ -42,8 +42,8 @@ export class TablaReferenciasComponent implements OnInit {
       if (result.isConfirmed) {
         this.referenciasService.deleteReferencias(idReferencia).subscribe(
           (rta) => {
-            Swal.fire('Department deleted!', '', 'success')
-            this.ngOnInit();
+            Swal.fire('Department deleted!', '', 'success'),
+            this.ngOnInit()
           }
         );
       } else if (result.isDenied) {
