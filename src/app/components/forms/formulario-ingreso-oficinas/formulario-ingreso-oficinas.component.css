@@ -1,0 +1,14 @@
+div{
+    margin: 0 auto;
+    width: 80%;
+}
+form{
+    padding: 10px;
+}
+.alert-danger{
+    margin: 0px;
+}
+button{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
