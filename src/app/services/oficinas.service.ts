@@ -20,4 +20,8 @@ export class OficinasService {
   getListaOficinas(): Observable<Oficinas[]>{
     return this.http.get<Oficinas[]>(`${this.urlBase}/oficinas/listaoficinas`, {headers: this.header})
   }
+
+  postOficinas(oficinas: Oficinas): Observable<Oficinas>{
+    return this.http.post<Oficinas>(`${this.urlBase}/oficinas/ingresaroficina`, oficinas, {headers: this.header})
+  }
 }

@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Ciudades } from 'src/app/models/ciudades';
 import { OficinasService } from 'src/app/services/oficinas.service';
 import { CiudadesService } from 'src/app/services/ciudades.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formulario-ingreso-oficinas',
@@ -13,17 +15,24 @@ import { CiudadesService } from 'src/app/services/ciudades.service';
 export class FormularioIngresoOficinasComponent implements OnInit {
 
   public oficinas: Oficinas = new Oficinas();
+  public ciudades: Ciudades = new Ciudades();
   public nombresCiudades: Ciudades[];
   public formulario: FormGroup;
 
   constructor(
     private oficinasService: OficinasService,
-    private ciudadesService: CiudadesService
+    private ciudadesService: CiudadesService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.armarFormulario();
     this.getListadoNombresCiudades();
+  }
+
+  volverPaginaPrincipal(): void{
+    this.router.navigate(['/oficinas'], {relativeTo: this.route})
   }
 
   armarFormulario(){
@@ -43,7 +52,18 @@ export class FormularioIngresoOficinasComponent implements OnInit {
     )
   }
 
-  rellenarCiudad(){
-
+  ingresarOficina(){
+    this.oficinas.strCodigoOficina = this.formulario.value.strCodigoOficina;
+    this.oficinas.strNombreOficina = this.formulario.value.strNombreOficina;
+    this.oficinas.strDireccionOficina = this.formulario.value.strDireccionOficina;
+    this.ciudades.numCodigoCiudad = this.formulario.value.ciudadesEntity;
+    this.oficinas.ciudadesEntity = this.ciudades;
+    this.oficinasService.postOficinas(this.oficinas).subscribe(
+      (oficinasRta) => {
+        (this.armarFormulario()),
+        (Swal.fire('¡Proceso Exitoso!', 'Oficina Ingresada', 'success')),
+        (this.volverPaginaPrincipal())
+      }
+    )
   }
 }

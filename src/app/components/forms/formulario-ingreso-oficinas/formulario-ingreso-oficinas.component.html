@@ -1,6 +1,6 @@
 <form [formGroup]="formulario" *ngIf="formulario">
     <div class="mb-3">
-        <label for="strCodigoOficina" class="form-label">Código Dane</label>
+        <label for="strCodigoOficina" class="form-label">Código Oficina</label>
         <input formControlName="strCodigoOficina" type="text" class="form-control"/>
         <div class="alert alert-danger" *ngIf="formulario.get('strCodigoOficina').invalid && (formulario.get('strCodigoOficina').dirty || formulario.get('strCodigoOficina').touched)">
             <div *ngIf="formulario.get('strCodigoOficina').errors.required">El código de oficina es requerido</div>
@@ -34,6 +34,6 @@
     </div>
 </form>
 <div class="d-grid gap-2 d-md-block">
-    <button type="button" class="btn btn-danger" [disabled]="!formulario.valid">Guardar</button>
-    <button type="button" class="btn btn-danger">Volver Página Anterior</button>
+    <button type="button" class="btn btn-danger" (click)="ingresarOficina()" [disabled]="!formulario.valid">Guardar</button>
+    <button type="button" class="btn btn-danger" (click)="volverPaginaPrincipal()">Volver Página Anterior</button>
 </div>
