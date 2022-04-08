@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Referencias } from 'src/app/models/referencias';
 import { ReferenciasService } from 'src/app/services/referencias.service';
 import Swal from 'sweetalert2';
@@ -19,7 +19,8 @@ export class FormularioActualizacionReferenciasComponent implements OnInit {
 
   constructor(
     private referenciasService: ReferenciasService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +29,7 @@ export class FormularioActualizacionReferenciasComponent implements OnInit {
   }
 
   volverPaginaPrincipal(): void{ 
-    this.router.navigateByUrl('/referencias', {skipLocationChange: true}).then(()=> this.router.navigate(["/referencias"]));
+    this.router.navigate(['/referencias'], {relativeTo: this.route})
   }
 
   private armarFormulario(){

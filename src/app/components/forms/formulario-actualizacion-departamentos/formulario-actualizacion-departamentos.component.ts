@@ -1,10 +1,9 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Departamentos } from 'src/app/models/departamentos';
 import { DepartamentosService } from 'src/app/services/departamentos.service';
 import Swal from 'sweetalert2';
-import { TablaDepartamentosComponent } from '../../tables/tabla-departamentos/tabla-departamentos.component';
 
 @Component({
   selector: 'app-formulario-actualizacion-departamentos',
@@ -20,7 +19,8 @@ export class FormularioActualizacionDepartamentosComponent implements OnInit {
 
   constructor(
     private departamentosService: DepartamentosService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -37,7 +37,7 @@ export class FormularioActualizacionDepartamentosComponent implements OnInit {
   }
 
   volverPaginaPrincipal(): void{ 
-    this.router.navigateByUrl('/departamentos', {skipLocationChange: true}).then(()=> this.router.navigate(["/departamentos"]));
+    this.router.navigate(['/departamentos'], {relativeTo: this.route})
   }
 
   

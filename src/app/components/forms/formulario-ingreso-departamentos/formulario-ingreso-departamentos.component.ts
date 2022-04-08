@@ -18,7 +18,7 @@ export class FormularioIngresoDepartamentosComponent implements OnInit {
   constructor(
     private departamentosService: DepartamentosService,
     private router: Router,
-    private activateRouter: ActivatedRoute
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class FormularioIngresoDepartamentosComponent implements OnInit {
   }
 
   volverPaginaPrincipal(): void{ 
-    this.router.navigateByUrl('/departamentos', {skipLocationChange: true}).then(()=> this.router.navigate(["/departamentos"]));
+    this.router.navigate(['/departamentos'], {relativeTo: this.route})
   }
 
 

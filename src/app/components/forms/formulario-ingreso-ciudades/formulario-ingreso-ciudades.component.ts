@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Ciudades } from 'src/app/models/ciudades';
 import { Departamentos } from 'src/app/models/departamentos';
 import { CiudadesService } from 'src/app/services/ciudades.service';
@@ -22,7 +22,8 @@ export class FormularioIngresoCiudadesComponent implements OnInit {
   constructor(
     private ciudadesService: CiudadesService,
     private departamentosService: DepartamentosService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +32,7 @@ export class FormularioIngresoCiudadesComponent implements OnInit {
   }
 
   volverPaginaPrincipal(){
-    this.router.navigateByUrl('/ciudades', {skipLocationChange: true}).then(()=> this.router.navigate(["/ciudades"]));
+    this.router.navigate(['/ciudades'], {relativeTo: this.route})
   }
 
   private armarFormulario(){
