@@ -17,5 +17,4 @@ export class OficinasComponent implements OnInit {
   setMostrarListadoOficinas(){
     this.mostrarListadoOficinas = !this.mostrarListadoOficinas;
   }
-
 }

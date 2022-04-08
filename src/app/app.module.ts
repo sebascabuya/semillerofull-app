@@ -25,6 +25,7 @@ import { TablaCiudadesComponent } from './components/tables/tabla-ciudades/tabla
 import { FormularioIngresoCiudadesComponent } from './components/forms/formulario-ingreso-ciudades/formulario-ingreso-ciudades.component';
 import { FormularioActualizacionCiudadesComponent } from './components/forms/formulario-actualizacion-ciudades/formulario-actualizacion-ciudades.component';
 import { OficinasComponent } from './components/oficinas/oficinas.component';
+import { TablaOficinasComponent } from './components/tables/tabla-oficinas/tabla-oficinas.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { OficinasComponent } from './components/oficinas/oficinas.component';
     TablaCiudadesComponent,
     FormularioIngresoCiudadesComponent,
     FormularioActualizacionCiudadesComponent,
-    OficinasComponent
+    OficinasComponent,
+    TablaOficinasComponent
   ],
   imports: [
     BrowserModule,
