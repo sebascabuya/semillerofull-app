@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OficinasComponent implements OnInit {
 
+  mostrarListadoOficinas: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  setMostrarListadoOficinas(){
+    this.mostrarListadoOficinas = !this.mostrarListadoOficinas;
   }
 
 }

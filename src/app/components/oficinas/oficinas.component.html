@@ -1,1 +1,16 @@
-<p>oficinas works!</p>
+<div>
+    <h1>Listado Oficinas</h1>
+</div>
+<div>
+    <button type="button" class="btn btn-primary" (click)="setMostrarListadoOficinas()">
+        {{mostrarListadoOficinas == true ? "Ocultar Lista" : "Mostrar Lista"}}
+    </button>
+</div>
+<div *ngIf="mostrarListadoOficinas">
+    Aca irá la tabla
+</div>
+<div>
+  <button type="button" class="btn btn-primary" routerLink="formulario-ingreso-departamentos">
+      Ingresar Departamento
+  </button>
+</div>
