@@ -27,6 +27,7 @@ import { FormularioActualizacionCiudadesComponent } from './components/forms/for
 import { OficinasComponent } from './components/oficinas/oficinas.component';
 import { TablaOficinasComponent } from './components/tables/tabla-oficinas/tabla-oficinas.component';
 import { FormularioIngresoOficinasComponent } from './components/forms/formulario-ingreso-oficinas/formulario-ingreso-oficinas.component';
+import { FormularioActualizacionOficinasComponent } from './components/forms/formulario-actualizacion-oficinas/formulario-actualizacion-oficinas.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { FormularioIngresoOficinasComponent } from './components/forms/formulari
     FormularioActualizacionCiudadesComponent,
     OficinasComponent,
     TablaOficinasComponent,
-    FormularioIngresoOficinasComponent
+    FormularioIngresoOficinasComponent,
+    FormularioActualizacionOficinasComponent
   ],
   imports: [
     BrowserModule,
