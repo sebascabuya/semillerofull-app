@@ -16,8 +16,10 @@ export class FormularioActualizacionOficinasComponent implements OnInit {
 
   public oficinas: Oficinas = new Oficinas();
   public ciudades: Ciudades = new Ciudades();
+  public oficinaElegida: Oficinas[];
   public nombresCiudades: Ciudades[];
   public formulario: FormGroup;
+  idOficinaElegida: number = JSON.parse(sessionStorage.getItem("Oficina Id"))
 
   constructor(
     private oficinasService: OficinasService,
@@ -29,6 +31,7 @@ export class FormularioActualizacionOficinasComponent implements OnInit {
   ngOnInit(): void {
     this.armarFormulario();
     this.getListadoNombresCiudades();
+    this.rellenarFormulario();
   }
 
   volverPaginaPrincipal(): void{
@@ -37,6 +40,7 @@ export class FormularioActualizacionOficinasComponent implements OnInit {
 
   armarFormulario(){
     this.formulario = new FormGroup({
+      numIdOficina: new FormControl(this.oficinas.numIdOficina),
       strCodigoOficina: new FormControl(this.oficinas.strCodigoOficina, [Validators.required, Validators.minLength(3)]),
       strNombreOficina: new FormControl(this.oficinas.strNombreOficina, [Validators.required, Validators.minLength(4)]),
       strDireccionOficina: new FormControl(this.oficinas.strDireccionOficina, [Validators.required, Validators.minLength(10)]),
@@ -52,16 +56,32 @@ export class FormularioActualizacionOficinasComponent implements OnInit {
     )
   }
 
+  rellenarFormulario(){
+    this.formulario.get("numIdOficina").disable();
+    this.oficinasService.getOficinaById(this.idOficinaElegida).subscribe(
+      (oficinasRta) => {
+        (this.oficinaElegida = oficinasRta),
+        this.formulario.patchValue({
+          numIdOficina: this.oficinaElegida['numIdOficina'],  
+          strCodigoOficina: this.oficinaElegida['strCodigoOficina'], 
+          strNombreOficina: this.oficinaElegida['strNombreOficina'],
+          strDireccionOficina: this.oficinaElegida['strDireccionOficina'],
+          ciudadesEntity: this.oficinaElegida['ciudadesEntity']['numCodigoCiudad']
+        })
+      }
+    );
+  }
+
   actualizarOficina(){
     this.oficinas.strCodigoOficina = this.formulario.value.strCodigoOficina;
     this.oficinas.strNombreOficina = this.formulario.value.strNombreOficina;
     this.oficinas.strDireccionOficina = this.formulario.value.strDireccionOficina;
     this.ciudades.numCodigoCiudad = this.formulario.value.ciudadesEntity;
     this.oficinas.ciudadesEntity = this.ciudades;
-    this.oficinasService.postOficinas(this.oficinas).subscribe(
+    this.oficinasService.putOficinas(this.idOficinaElegida, this.oficinas).subscribe(
       (oficinasRta) => {
         (this.armarFormulario()),
-        (Swal.fire('¡Proceso Exitoso!', 'Oficina Ingresada', 'success')),
+        (Swal.fire('¡Proceso Exitoso!', 'Oficina Actualizada', 'success')),
         (this.volverPaginaPrincipal())
       }
     )

@@ -1,5 +1,9 @@
 <form [formGroup]="formulario" *ngIf="formulario">
-    <div class="mb-3">
+    <div class="mb-2">
+        <label for="numIdOficina" class="form-label">Id Oficina</label>
+        <input formControlName="numIdOficina" type="text" class="form-control"/>
+    </div>
+    <div class="mb-2">
         <label for="strCodigoOficina" class="form-label">Código Oficina</label>
         <input formControlName="strCodigoOficina" type="text" class="form-control"/>
         <div class="alert alert-danger" *ngIf="formulario.get('strCodigoOficina').invalid && (formulario.get('strCodigoOficina').dirty || formulario.get('strCodigoOficina').touched)">
@@ -7,7 +11,7 @@
             <div *ngIf="formulario.get('strCodigoOficina').errors.minlength">El código de oficina debe tener minimo 3 carácteres</div>
         </div>
     </div>
-    <div class="mb-3">
+    <div class="mb-2">
         <label for="strNombreOficina" class="form-label">Nombre Oficina</label>
         <input formControlName="strNombreOficina" type="text" class="form-control" name="strNombreOficina"/>       
         <div class="alert alert-danger" *ngIf="formulario.get('strNombreOficina').invalid && (formulario.get('strNombreOficina').dirty || formulario.get('strNombreOficina').touched)">
@@ -15,7 +19,7 @@
             <div *ngIf="formulario.get('strNombreOficina').errors.minlength">El nombre de la oficina debe tener minimo 4 carácteres</div>
         </div>
     </div>
-    <div class="mb-3">
+    <div class="mb-2">
         <label for="strDireccionOficina" class="form-label">Dirección Oficina</label>
         <input formControlName="strDireccionOficina" type="text" class="form-control" name="strDireccionOficina"/>       
         <div class="alert alert-danger" *ngIf="formulario.get('strDireccionOficina').invalid && (formulario.get('strDireccionOficina').dirty || formulario.get('strDireccionOficina').touched)">
@@ -23,7 +27,7 @@
             <div *ngIf="formulario.get('strDireccionOficina').errors.minlength">El dirección de la oficina debe tener minimo 10 carácteres</div>
         </div>
     </div>
-    <div class="mb-3">
+    <div class="mb-2">
         <label for="ciudadesEntity" class="form-label">Dirección</label>
         <select id="ciudadesEntity" class="form-select" size="3" formControlName="ciudadesEntity">
             <option *ngFor="let ciudad of nombresCiudades" value="{{ciudad.numCodigoCiudad}}">{{ciudad.strNombreCiudad}}</option>
@@ -34,6 +38,6 @@
     </div>
 </form>
 <div class="d-grid gap-2 d-md-block">
-    <button type="button" class="btn btn-danger" [disabled]="!formulario.valid">Guardar</button>
+    <button type="button" class="btn btn-danger" (click)="actualizarOficina()" [disabled]="!formulario.valid">Actualizar</button>
     <button type="button" class="btn btn-danger" (click)="volverPaginaPrincipal()">Volver Página Anterior</button>
 </div>

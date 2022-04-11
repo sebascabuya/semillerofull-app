@@ -20,8 +20,20 @@ export class OficinasService {
   getListaOficinas(): Observable<Oficinas[]>{
     return this.http.get<Oficinas[]>(`${this.urlBase}/oficinas/listaoficinas`, {headers: this.header})
   }
+  
+  getOficinaById(oficinaId: number): Observable<Oficinas[]>{
+    return this.http.get<Oficinas[]>(`${this.urlBase}/oficinas/oficinabyid/${oficinaId}`, {headers: this.header})
+  }
 
   postOficinas(oficinas: Oficinas): Observable<Oficinas>{
     return this.http.post<Oficinas>(`${this.urlBase}/oficinas/ingresaroficina`, oficinas, {headers: this.header})
+  }
+
+  putOficinas(oficinaId: number, oficinas: Oficinas): Observable<Oficinas>{
+    return this.http.put<Oficinas>(`${this.urlBase}/oficinas/actualizaroficina/${oficinaId}`, oficinas, {headers: this.header})
+  }
+
+  deleteOficinas(oficinaId: number): Observable<Oficinas>{
+    return this.http.delete<Oficinas>(`${this.urlBase}/oficinas/eliminaroficina/${oficinaId}`, {headers: this.header})
   }
 }

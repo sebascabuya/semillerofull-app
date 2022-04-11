@@ -64,8 +64,7 @@ export class FormularioActualizacionCiudadesComponent implements OnInit {
           strCodigoDaneCiudad: this.ciudadElegida['strCodigoDaneCiudad'],
           strNombreCiudad: this.ciudadElegida['strNombreCiudad'],
           departamentosEntity: this.ciudadElegida['departamentosEntity']['numCodigoDepartamento']
-        }),
-        console.log(this.ciudadElegida['departamentosEntity']['numCodigoDepartamento'])
+        })
       }
     )
   }
